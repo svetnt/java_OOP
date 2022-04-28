@@ -7,11 +7,14 @@ import java.util.Scanner;
 public class Calk {
     public static void main(String[] args) throws IOException {
         File file=new File("Data.txt");
+        File fileResult=new File("Result.txt");
         file.createNewFile();
+        fileResult.createNewFile();
         FileWriter writer=new FileWriter(file);
+        FileWriter writerResult=new FileWriter(fileResult);
         writer.write("10 + 25");
         writer.flush();
-        writer.close();
+
         FileReader fr=new FileReader(file);
         Scanner sc=new Scanner(fr);
 
@@ -30,6 +33,9 @@ public class Calk {
             }
             if (oper.equals("+")) {
                 System.out.println(num1 + num2);
+                String sum=Double.toString(num1+num2);
+                writerResult.write(sum);
+                writerResult.flush();
             }
             if (oper.equals("-")) {
                 System.out.println(num1 - num2);
